@@ -1,0 +1,23 @@
+Name: Ishan Prabhu
+Assignment: If Else Statements
+Class: CIS 016 Programming with Java
+Date: October 6
+
+
+1Q. Looking up the value of a variable
+
+1A. You can just hover over the variable, and it will show you the value. It can also be 
+---------------------------------------------------------------------------------------
+2Q. Change the value of a variable while debugging
+
+2A. Go to the variables view, and then right click on the variable you want to change. Then click 
+"Change Value" and enter whatever value you want.
+---------------------------------------------------------------------------------------
+3Q. Step through program 1 statement at a time.
+
+3A. Make breakpoints by double clicking on the left side of the code. Then run the program in debug mode, 
+so it will step through.
+---------------------------------------------------------------------------------------
+4Q. Set break points in your program
+
+4A. Just double click on the left side of the code, which set a breakpoint on that line.
