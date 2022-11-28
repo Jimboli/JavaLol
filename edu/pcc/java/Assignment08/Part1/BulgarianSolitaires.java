@@ -6,7 +6,13 @@ public class BulgarianSolitaires {
     //Main method, executes all the other methods
     public static void main(String[] args) {
         ArrayList<Integer> abc = inputList();
-        bulgarianAlgorithm(abc);
+        ArrayList<Integer> efg = new ArrayList<Integer>();
+
+        while (!efg.equals(abc)) {
+            efg = abc;
+            abc = bulgarianAlgorithm(efg);
+        }
+
     }
 
     //Takes input, handles exceptions, and turns input into list
@@ -20,61 +26,42 @@ public class BulgarianSolitaires {
 
         String[] arrOfStr = numbers.split(" ");
 
-        ArrayList<Integer> intList = new ArrayList<Integer>(Arrays.asList());
+        ArrayList<Integer> intList = new ArrayList<Integer>();
 
         try {
             for(String i : arrOfStr) {
-                int j = Integer.parseInt(i);
-                
-                if (j > 0) {
-                    intList.add(j);
-                } else {
-                    continue;
-                }
-                
+                String j = i;
+                int temp = Integer.parseInt(j);
+
+                if (temp > 0) {
+                    intList.add(temp);       
+                }   
             }
 
         } catch (Exception e) {
             System.out.println("Please enter integer(s).");
         }
         
+        intList.sort(Comparator.naturalOrder());
+        System.out.println(intList);
+        
         return intList;
     }
 
     //Takes input as parameter, and does algorithm for bulg. solitaire
-    public static void bulgarianAlgorithm(ArrayList<Integer> alg) {
-        int[] goal = {1,2,3,4,5,6,7,8,9};
-        int[] A = new int[45];
-        int total = 45;
-        int currentSize = 0;
-        int counter=0;
-        
-        //Form initial pile of random size >=1 and <=45
-        for(int i=0; total>0; i++)
-        {
-          int rn = (int) (Math.random()*total)+1;
-          total -= rn;
-          A[i] = rn;
-          currentSize++;
+    public static ArrayList<Integer> bulgarianAlgorithm(ArrayList<Integer> alg) {
+        ArrayList<Integer> newList = new ArrayList<Integer>();
+        newList.add(alg.size());
+
+        for (int item:alg) {
+            if (item > 1) {
+                newList.add(item-1);
+            }
         }
-        System.out.println(A, currentSize);
+
+        newList.sort(Comparator.naturalOrder());
+        System.out.println(newList);
         
-        //Start game of removing one card from each pile
-        while(true)
-        {
-          int newPile=0;
-          for(int i=0; i<currentSize ; i++)
-          { 
-            A[i] = A[i]-1; //remove one card from each pile
-            newPile++;      
-          }
-          
-          currentSize++;
-          A[currentSize-1] = newPile;
+        return newList;
     }
-
-    //Prints the result(s)
-    public static void arrayPrinter(int[][] b) {
-    }
-
 }
